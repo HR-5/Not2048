@@ -494,7 +494,7 @@
                                 var result = document.getElementById("result");
                                 result.style.display = "block";
                                 var res = document.getElementById("res");
-                                res.innerHTML = time.toFixed(2);
+                                res.innerHTML = (time.toFixed(2)-0.01);
                                 tilesoff();
                             }
                         }
@@ -522,6 +522,7 @@
                     for (var i = 0; i < tiles.length; i++) {
                         var tile = tiles[i];
                         tile.style.display = "none";
+                        tile.classList.remove("notile");
                     }
                     var start = document.getElementById("start");
                     start.style.display = "block";
