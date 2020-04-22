@@ -73,7 +73,7 @@
             }
 
             #click {
-                color: #59c439;
+                color: #66b21b;
                 position: relative;
                 margin: 10px auto;
                 font-size: 1.3rem;
@@ -89,9 +89,7 @@
                 background: #282828;
                 margin: auto;
                 user-select: none;
-                border-style: groove;
                 border-radius: 8px;
-                border-color: #f52f2f;
             }
 
             #timerbox {
@@ -106,7 +104,7 @@
                 font-weight: bold;
                 padding: 25px 0;
                 border-style: solid;
-                border-color: green;
+                border-color: rgb(75,28,108);
                 border-radius: 8px;
                 border-width: 2px;
                 font-size: 1.5rem;
@@ -131,6 +129,8 @@
                 font-size: 4rem;
                 border-color: transparent;
                 cursor: pointer;
+                color: rgb(226,120,2);
+                font-weight: bold;
             }
 
             #start:focus {
@@ -175,13 +175,27 @@
             }
 
             #bt {
-                max-width: 350px;
+                max-width: 300px;
                 margin: auto;
                 position: relative;
                 top: 25vh;
-                border-style: groove;
                 border-radius: 8px;
-                padding-bottom: 5px;
+                border: 2px solid #50008c;
+                padding-bottom: 10px;
+                z-index: 2;
+                background-color: #e6dcff;
+                color: #50008c;
+            }
+
+            #bt h3 {
+            	text-align: center; 
+            	background-color: #8c5ac8; 
+            	padding: 10px; 
+            	font-weight: bold; 
+            	font-size: 1.7rem;
+            	border-top-left-radius: 8px;
+            	border-top-right-radius: 8px;
+            	margin-top: 0;
             }
 
             ol {
@@ -205,7 +219,7 @@
             }
 
             #tops {
-                color: blue;
+                color: #8c5ac8;
                 text-align: right;
                 font-size: 1.3rem;
                 cursor: pointer;
@@ -232,16 +246,6 @@
             	transform: rotate(-360deg);
 				transition-duration: 0.7s;
 				transition-timing-function: ease-in-out;
-            }
-
-            #text {
-            	position: relative;
-            	top: 0px;
-            	text-align: center; 
-            	background-color: red; 
-            	padding: 10px; 
-            	font-weight: bold; 
-            	font-size: 2rem;
             }
 
             @media (max-width: 450px) {
@@ -324,7 +328,7 @@
                 <div class="tile col-2" id="t25"></div>
             </div>
             <div>
-                <button onclick="start()" id="start">START
+                <button onclick="start()" id="start">PLAY
 			</button>
             </div>
         </div>
@@ -332,9 +336,9 @@
         	<img src="reset.png" style="max-width: 25px;"> RESET
         </div>
         <div id="bsdisp">
-            <div id="bt" style="background-color: orange;">
+            <div id="bt">
                 <span class="close">&times;</span>
-                <h3 id="text">BEST 5 TIME</h3>
+                <h3>BEST 5 TIME</h3>
                 <ol id="bscores"></ol>
             </div>
         </div>
@@ -516,7 +520,7 @@
                     }
                     var start = document.getElementById("start");
                     start.style.display = "block";
-                    start.innerHTML = "START";
+                    start.innerHTML = "PLAY";
                     var ti = document.getElementById("timer");
                     ti.innerHTML = "0.00";
                 }
