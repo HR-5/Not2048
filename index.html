@@ -122,16 +122,16 @@
             }
 
             #start {
-                display: block;
-                position: relative;
-                margin: auto;
+				margin: auto;
                 margin-top: 150px;
-                background-color: transparent;
-                font-size: 4rem;
-                border-color: transparent;
-                cursor: pointer;
-                color: rgb(226,120,2);
-                font-weight: bold;
+                background-color: rgb(226,120,2);
+				border-radius: 40px;
+				cursor:pointer;
+				color: #282828;
+				font-size:3rem;
+				font-weight: bold;
+				padding:16px 31px;
+				text-decoration:none;
             }
 
             #start:focus {
@@ -232,7 +232,7 @@
                 font-size: 1.3rem;
                 max-width: 110px;
                 margin: auto;
-                margin-top: 25px;
+                margin-top: 20px;
                 text-align: center;
                 cursor: pointer;
             }
@@ -375,8 +375,6 @@
                 }
             }
 
-            console.log(best);
-
             function start_timer() {
                 var ti = document.getElementById("timer");
                 timer = setInterval(function() {
@@ -401,11 +399,14 @@
             }
 
             function start() {
+                count = 0;
                 num();
                 var ti = 3;
                 var start = document.getElementById("start");
                 var x = setInterval(function() {
                     start.innerHTML = ti;
+                    start.style.backgroundColor = "transparent";
+                	start.style.color = "rgb(226,120,2)";
                     if (ti == 0) {
                         clearInterval(x);
                         start.style.display = "none";
@@ -525,6 +526,8 @@
                     var start = document.getElementById("start");
                     start.style.display = "block";
                     start.innerHTML = "PLAY";
+                    start.style.color = "#282828";
+                	start.style.backgroundColor = "rgb(226,120,2)";
                     var ti = document.getElementById("timer");
                     ti.innerHTML = "0.00";
                 }
