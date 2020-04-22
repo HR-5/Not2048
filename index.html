@@ -3,6 +3,7 @@
     <head>
         <title>!2048</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="favicon.png"/>
         <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <style type="text/css">
             * {
@@ -219,6 +220,8 @@
             }
 
             #tops {
+            	position: relative;
+            	top: 5px;
                 color: #8c5ac8;
                 text-align: right;
                 font-size: 1.3rem;
@@ -275,11 +278,12 @@
         </style>
     </head>
     <body>
-        <div class="row" id="header">! 2048
-	</div>
+        <div class="row" id="header">
+        	<img src="logo.png" style="max-width: 100px">
+		</div>
         <div id="timerbox" class="row">
             <div class="col-5" style="font-size: 1.3rem">
-                Time<br>
+                <span style="color: #8c5ac8">Time<br></span>
                 <div id="timer">0:00</div>
             </div>
             <div id="tops" class="col-5">Top 5 Score</div>
