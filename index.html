@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>!2048</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<style type="text/css">
+		* {
+  			box-sizing: border-box;
+		}
+
+		.row {
+			margin: 1px 1px;
+		}
+
+		.row::after {
+		  content: "";
+		  clear: both;
+		  display: table;
+		}
+
+		[class*="col-"] {
+		  float: left;
+		  padding: 15px;
+		}
+
+		.col-1 {width: 10%;}
+		.col-2 {width: 20%;}
+		.col-3 {width: 30%;}
+		.col-4 {width: 40%;}
+		.col-5 {width: 50%;}
+		.col-6 {width: 60%;}
+		.col-7 {width: 70%;}
+		.col-8 {width: 80%;}
+		.col-9 {width: 90%;}
+		.col-10 {width: 100%;}
+
+		body {
+			margin: 0;	
+			background-color: lightgray;
+			font-family: 'Arimo', sans-serif;
+			background-color: #2d2e30;
+			color: #eeeeee;
+		}
+
+		#click {
+			color: #59c439;
+			position: relative;
+			margin: 10px auto;
+			font-size: 1.3rem;
+			line-height: 1.6;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		#box {
+			padding: 1px 0;
+			max-width: 420px;
+			min-height: 419px;
+			background: #282828;
+			margin: auto;
+			user-select: none;
+			border-style: groove;
+			border-radius: 8px;
+			border-color: #f52f2f;
+		}
+
+		#timerbox {
+			max-width: 420px;
+			margin: auto;
+			margin-top: 20px;
+		}
+
+		.tile {
+			display: none;
+			background: #89808a;
+			font-weight: bold;
+			padding: 25px 0;
+			border-style: solid;
+			border-color: green;
+			border-radius: 8px;
+			border-width: 2px;
+			font-size: 1.5rem;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.notile {
+			display: inline-block;
+			background-color: transparent !important;
+			font-weight: bold;
+			padding: 25px 0;
+			border-color: transparent;
+		}
+
+		#start {
+			display: none;
+			position: relative;
+			margin: auto;
+			margin-top: 150px;
+			background-color: transparent;
+			font-size: 4rem;
+			border-color: transparent;
+			cursor: pointer;
+		}
+
+		#start:focus {
+  			outline: none;
+		}
+
+		#result {
+			position: relative;
+			margin: auto;
+			margin-top: 150px;
+			background-color: transparent;
+			font-size: 4rem;
+			border-color: transparent;
+			text-align: center;
+
+		}
+
+		button {
+		  background-color: #4CAF50;
+		  border: none;
+		  color: white;
+		  padding: 12px 30px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: block;
+		}
+
+		#header {
+			text-align: center;
+			font-size: 2rem;
+			margin-top: 20px;
+		}
+
+		#bsdisp {
+			display: none;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			width: 100vw;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.7);
+		}
+
+		#bt {
+			max-width: 350px;
+			margin: auto;
+			position: relative;
+			top: 25vh;
+			padding-bottom: 5px;
+		}
+
+		ol {
+			text-align: center;
+			list-style-position: inside;
+			padding: 0;
+			line-height: 1.6;
+			font-size: 1.3rem;
+		}
+
+		.close {
+		  color: #aaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		  position: relative;
+		  top: 12px;
+		  right: 10px;
+		  color: black;
+		  cursor: pointer;
+		}
+
+		#tops {
+			color: blue;
+			text-align: right;
+			font-size: 1.3rem;
+			cursor: pointer;
+		}
+
+		@media (max-width: 450px) {
+			#box {
+				max-width: 90vw;
+				min-height: 85vw;
+			}
+
+			.tile {
+				padding: 5.7vw 0;
+				font-size: 1.2rem;
+			}
+
+			#click {
+				font-size: 1.1rem;
+			}
+
+			#bt {
+				max-width: 90vw;
+			}
+
+			#start {
+				margin-top: 30vw;
+				font-size: 3rem;
+			}
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="row" id="header">
+		! 2048
+	</div>
+
+	<div id="timerbox" class="row">
+		<div class="col-5" style="font-size: 1.3rem">Time<br><div id="timer">0:00</div></div>
+		<div id="tops" class="col-5">Top 5 Score</div>
+	</div>
+
+	<div id="click">
+		Click the numbers as quickly as you can!
+	</div>
+
+	<div id="box">
+		<div id="result">
+			Your Score<br> 0.00
+		</div>
+		<div class="row">
+			<div class="tile col-2" id="t1"></div>
+			<div class="tile col-2" id="t2"></div>
+			<div class="tile col-2" id="t3"></div>
+			<div class="tile col-2" id="t4"></div>
+			<div class="tile col-2" id="t5"></div>
+		</div>
+		<div class="row">
+			<div class="tile col-2" id="t6"></div>
+			<div class="tile col-2" id="t7"></div>
+			<div class="tile col-2" id="t8"></div>
+			<div class="tile col-2" id="t9"></div>
+			<div class="tile col-2" id="t10"></div>
+		</div>
+		<div class="row">
+			<div class="tile col-2" id="t11"></div>
+			<div class="tile col-2" id="t12"></div>
+			<div class="tile col-2" id="t13"></div>
+			<div class="tile col-2" id="t14"></div>
+			<div class="tile col-2" id="t15"></div>
+		</div>
+		<div class="row">
+			<div class="tile col-2" id="t16"></div>
+			<div class="tile col-2" id="t17"></div>
+			<div class="tile col-2" id="t18"></div>
+			<div class="tile col-2" id="t19"></div>
+			<div class="tile col-2" id="t20"></div>
+		</div>
+		<div class="row">
+			<div class="tile col-2" id="t21"></div>
+			<div class="tile col-2" id="t22"></div>
+			<div class="tile col-2" id="t23"></div>
+			<div class="tile col-2" id="t24"></div>
+			<div class="tile col-2" id="t25"></div>
+		</div>
+		<div>
+			<button onclick="start()" id="start">
+				START
+			</button>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 25px;">
+		<button style="margin: auto;" id="reset">Reset</button>
+	</div>
+
+	<div id="bsdisp">
+		<div id="bt" style="background-color: orange;">
+			<span class="close">&times;</span>
+			<h3 style="text-align: center; background-color: red; padding: 10px; font-weight: bold; font-size: 2rem; ">BEST 5 TIME</h3>
+			<ol id="bscores"></ol>
+		</div>
+	</div>
+
+	<audio id="sound">
+  		<source src="sounds.mp3" type="audio/mpeg">
+	</audio>
+	
+	<script type="text/javascript">
+
+		var timer;
+		var time = 0, count=0;
+		var i=0;
+		var best;
+
+		var Ra = 140, Ga = 90, Ba = 200;
+		var Rb = 80, Gb = 0, Bb = 140;
+		var nos = [], ind = [];
+
+
+		if (typeof(Storage) !== "undefined") {
+    		best = window.localStorage.getItem("best");
+    		if (best == null) best = [];
+    		else {
+    			best = best.split(",");
+    		}
+    	}
+
+    	console.log(best);
+
+		function start_timer() { 
+			var ti = document.getElementById("timer");
+			timer = setInterval(function() {
+				ti.innerHTML = time.toFixed(2);
+				time += 0.01;
+			}, 10);
+		}
+
+		function newbest() {
+			best.push((time-0.01).toFixed(2));
+			best.sort();
+			if (best.length>5) best = best.slice(0,5);
+			localStorage.setItem("best",best.toString());
+			console.log(best);
+			var bscores = document.getElementById("bscores");
+			var bshtml = "";
+			for(var y=0;y<best.length;y++) {
+				bshtml += ("<li>"+best[y]+"</li>");
+			}
+			bscores.innerHTML = bshtml;
+		}
+
+		function start() {
+			num();
+			var ti=3;
+			var start = document.getElementById("start");
+			var x = setInterval(function() {
+				start.innerHTML = ti;
+				if(ti==0) {	
+					clearInterval(x); 
+					start.style.display="none";
+					var tiles = document.getElementsByClassName('tile');
+					for(var i = 0; i < tiles.length; i++) {
+						var tile = tiles[i];
+						tile.style.display="inline-block";
+					}
+					start_timer();
+				}	
+				ti--;
+			},1000);	
+		}
+
+		function num() {
+				nos = shuffle(nos);
+				for(var i=1;i<26;i++) {
+					var t = document.getElementById("t"+i);
+					t.innerHTML = nos[i-1];
+					t.style.pointerEvents = 'none';
+					ind[nos[i-1]-1] = i;
+					var r = Ra+((Rb - Ra)/40)*nos[i-1], g = Ga+((Gb - Ga)/40)*nos[i-1], b = Ba+((Bb - Ba)/40)*nos[i-1];
+					t.style.backgroundColor = "rgb("+r+","+g+","+b+")"
+					
+				}
+				document.getElementById("t" + ind[count]).style.pointerEvents = 'auto';
+					document.getElementById("t" + ind[count++]).style.cursor = 'pointer';
+			}
+
+		function shuffle(array) {
+			var i = array.length, j = 0, temp;
+			while (i--) {
+				j = Math.floor(Math.random() * (i+1));
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+				}
+			return array;
+		}
+
+		window.onload = function() {
+			
+			var tiles = document.getElementsByClassName('tile');
+			
+			for(var i = 0; i < tiles.length; i++) {
+				var tile = tiles[i];
+				tile.onclick = function() {
+					document.getElementById("sound").play();
+					if(parseInt(this.innerHTML)<16){
+						var no = parseInt(this.innerHTML) + 25;
+						var r = Ra+((Rb - Ra)/40)*(no), g = Ga+((Gb - Ga)/40)*(no), b = Ba+((Bb - Ba)/40)*(no);
+						this.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+						this.innerHTML = no;
+						this.style.pointerEvents = 'none';
+						this.style.cursor = 'auto';
+						document.getElementById("t" + ind[count]).style.pointerEvents = 'auto';
+						document.getElementById("t" + ind[count++]).style.cursor = 'pointer';
+					}
+					else {
+						this.classList.add("notile");
+						this.style.cursor = 'auto';
+						this.innerHTML = "&nbsp";
+						this.style.pointerEvents = 'none';
+						if (count < 25) {
+							document.getElementById("t" + ind[count]).style.pointerEvents = 'auto';
+							document.getElementById("t" + ind[count++]).style.cursor = 'pointer';
+						}
+						else {
+							document.getElementById("t" + ind[count - 25]).style.pointerEvents = 'auto';
+							document.getElementById("t" + ind[count++ - 25]).style.cursor = 'pointer';
+						}
+						if(count == 41) {
+							clearInterval(timer);
+							newbest();	
+						}
+					}
+				}
+			}
+
+			
+
+			for(var i=1;i<26;i++) {
+				nos[i-1] = i;
+				ind[i-1] = 0;
+			}
+
+			// function num() {
+			// 	nos = shuffle(nos);
+			// 	for(var i=1;i<26;i++) {
+			// 		var t = document.getElementById("t"+i);
+			// 		t.innerHTML = nos[i-1];
+			// 		t.style.pointerEvents = 'none';
+			// 		ind[nos[i-1]-1] = i;
+			// 		var r = Ra+((Rb - Ra)/40)*nos[i-1], g = Ga+((Gb - Ga)/40)*nos[i-1], b = Ba+((Bb - Ba)/40)*nos[i-1];
+			// 		t.style.backgroundColor = "rgb("+r+","+g+","+b+")"
+			// 	}
+			// }
+
+			
+
+			var bscores = document.getElementById("bscores");
+			var bshtml = "";
+			for(var y=0;y<best.length;y++) {
+				bshtml += ("<li>"+best[y]+"</li>");
+			}
+			bscores.innerHTML = bshtml;
+
+			var reset = document.getElementById("reset");
+			reset.onclick = function() {
+				clearInterval(timer);
+				time = 0;
+				for(var i = 0; i < tiles.length; i++) {
+					var tile = tiles[i];
+					tile.style.display="none";
+				}
+				var start = document.getElementById("start");
+				start.style.display = "block";
+				start.innerHTML = "START";
+				var ti = document.getElementById("timer");
+				ti.innerHTML = "0.00";
+			}
+
+			var close = document.getElementsByClassName("close")[0];
+			close.onclick = function() {
+				document.getElementById("bsdisp").style.display = "none";
+			}
+
+			var open = document.getElementById("tops");
+			open.onclick = function() {
+				document.getElementById("bsdisp").style.display = "block";
+			}
+
+		}
+	</script>
+</body>
+</html>
