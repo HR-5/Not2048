@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
         <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/99d22b8049.js" crossorigin="anonymous"></script>
         <style type="text/css">
             * {
                 box-sizing: border-box;
@@ -247,7 +248,7 @@
             #bt h3 {
             	text-align: center; 
             	background-color: #8c5ac8; 
-            	padding: 10px; 
+            	padding: 20px; 
             	font-weight: bold; 
             	font-size: 1.7rem;
             	border-top-left-radius: 8px;
@@ -270,7 +271,7 @@
                 font-size: 28px;
                 font-weight: bold;
                 position: relative;
-                top: 12px;
+                top: 20px;
                 right: 10px;
                 color: black;
                 cursor: pointer;
@@ -362,6 +363,21 @@
                 display: none;
             }
 
+            #bs4 .row {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            #bs5 .row {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .vol {
+                margin-top: 10px;
+                cursor: pointer;
+            }
+
             @media (max-width: 450px) {
                 .box {
                     max-width: 90vw;
@@ -402,7 +418,11 @@
                 <span style="color: #8c5ac8">Time<br></span>
                 <div id="timer">0:00</div>
             </div>
-            <div id="tops" class="col-10">Top 5 Score</div>
+            <div class="col-10" style="text-align: right;">
+                <div id="tops">Top 5 Score</div>
+                <div id="volon" class="vol" onclick="vol(true)">Sound on <i class="fas fa-volume-up"></i></div>
+                <div id="voloff" class="vol" style="display: none;" onclick="vol(false)">Sound off <i class="fas fa-volume-mute" style="color: red"></i></div>
+            </div>
         </div>
         <div id="click">Click the numbers as quickly as you can!
 	</div>
@@ -520,7 +540,7 @@
                         <div class="col-10">Classic - 4&times;4</div>
                         <div class="col-3" onclick="changebs(5)" style="cursor: pointer;">&gt;</div>
                     </div>
-                    <ol id="bscores4"></ol>
+                    <div id="bscores4"></div>
                 </div>
                 <div id="bs5">
                     <div class="row">
@@ -529,7 +549,7 @@
                         <div class="col-10">Big - 5&times;5</div>
                         <div class="col-3" onclick="changebs(4)" style="cursor: pointer;">&gt;</div>
                     </div>
-                    <ol id="bscores5"></ol>
+                    <div id="bscores5"></div>
                 </div>
             </div>
         </div>
@@ -570,6 +590,20 @@
                 }
             }
 
+            function vol(v) {
+                var audio = document.getElementById("sound");
+                if (v) {
+                    document.getElementById("voloff").style.display = "block";
+                    document.getElementById("volon").style.display = "none";
+                    audio.muted = true;
+                }
+                else {
+                    document.getElementById("volon").style.display = "block";
+                    document.getElementById("voloff").style.display = "none";
+                    audio.muted = false;
+                }
+            }
+
             function start_timer() {
                 var ti = document.getElementById("timer");
                 timer = setInterval(function() {
@@ -589,11 +623,11 @@
                     best = best.slice(0, 5);
                 localStorage.setItem("best"+gsize, best.toString());
                 var bscores = document.getElementById("bscores" + gsize);
-                var bshtml = "";
+                var bshtml = "<ol>";
                 for (var y = 0; y < best.length; y++) {
                     bshtml += ("<li>" + best[y] + "</li>");
                 }
-                bscores.innerHTML = bshtml;
+                bscores.innerHTML = bshtml + "</ol>";
                 return nb;
             }
 
@@ -756,18 +790,20 @@
                 }
 
                 var bscores = document.getElementById("bscores4");
-                var bshtml = "";
+                var bshtml = "<ol>";
                 for (var y = 0; y < best4.length; y++) {
                     bshtml += ("<li>" + best4[y] + "</li>");
                 }
-                bscores.innerHTML = bshtml;
+                if (bshtml == "<ol>") bscores.innerHTML = "<p>No Best Score</p>";
+                else bscores.innerHTML = bshtml+"</ol>";
 
                 bscores = document.getElementById("bscores5");
-                bshtml = "";
+                bshtml = "<ol>";
                 for (var y = 0; y < best5.length; y++) {
                     bshtml += ("<li>" + best5[y] + "</li>");
                 }
-                bscores.innerHTML = bshtml;
+                if (bshtml == "<ol>") bscores.innerHTML = "<p>No Best Score</p>";
+                else bscores.innerHTML = bshtml+"</ol>";
 
                 var reset = document.getElementById("reset");
                 reset.onclick = function() {
