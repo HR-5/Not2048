@@ -429,7 +429,7 @@
         <div class="box" id="b4">
             <div id="result4" class="result">
                 <span id="sh4">Your Score</span><br>
-                <div id="res">0.00</div>
+                <div id="res4">0.00</div>
             </div>
             <div class="row">
                 <div class="tile col-5" id="t41"></div>
@@ -470,7 +470,7 @@
         <div class="box" id="b5">
             <div id="result5" class="result">
                 <span id="sh5">Your Score</span><br>
-                <div id="res">0.00</div>
+                <div id="res5">0.00</div>
         
             </div>
             <div class="row">
@@ -771,7 +771,7 @@
                                 var nhs = newbest();
                                 var result = document.getElementById("result"+gsize);
                                 result.style.display = "block";
-                                var res = document.getElementById("res");
+                                var res = document.getElementById("res"+gsize);
                                 res.innerHTML = (time-0.01).toFixed(2);
                                 if (nhs) {
                                     var nhs = document.getElementById("sh"+gsize);
@@ -808,8 +808,10 @@
                 var reset = document.getElementById("reset");
                 reset.onclick = function() {
                     clearInterval(timer);
-                    // var result = document.getElementById("result");
-                    // result.style.display = "none";
+                    var result = document.getElementById("result4");
+                    result.style.display = "none";
+                    result = document.getElementById("result5");
+                    result.style.display = "none";
                     time = 0;
                     for (var i = 1; i < gno+1; i++) {
                         var tile = document.getElementById("t" + gsize + i);
