@@ -26,48 +26,88 @@
             }
 
             .col-1 {
-                width: 10%;
+                width: 5%;
             }
 
             .col-2 {
-                width: 20%;
+                width: 10%;
             }
 
             .col-3 {
-                width: 30%;
+                width: 15%;
             }
 
             .col-4 {
-                width: 40%;
+                width: 20%;
             }
 
             .col-5 {
-                width: 50%;
+                width: 25%;
             }
 
             .col-6 {
-                width: 60%;
+                width: 30%;
             }
 
             .col-7 {
-                width: 70%;
+                width: 35%;
             }
 
             .col-8 {
-                width: 80%;
+                width: 40%;
             }
 
             .col-9 {
-                width: 90%;
+                width: 45%;
             }
 
             .col-10 {
+                width: 50%;
+            }
+
+            .col-11 {
+                width: 55%;
+            }
+
+            .col-12 {
+                width: 60%;
+            }
+
+            .col-13 {
+                width: 65%;
+            }
+
+            .col-14 {
+                width: 70%;
+            }
+
+            .col-15 {
+                width: 75%;
+            }
+
+            .col-16 {
+                width: 80%;
+            }
+
+            .col-17 {
+                width: 85%;
+            }
+
+            .col-18 {
+                width: 90%;
+            }
+
+            .col-19 {
+                width: 95%;
+            }
+
+            .col-20 {
                 width: 100%;
             }
 
             body {
                 margin: 0;
-                background-color: lightgray;
+                background-color: yellow;
                 font-family: 'Arimo', sans-serif;
                 background-color: #2d2e30;
                 color: #eeeeee;
@@ -83,7 +123,7 @@
                 text-align: center;
             }
 
-            #box {
+            .box {
                 padding: 1px 0;
                 max-width: 420px;
                 min-height: 419px;
@@ -103,7 +143,6 @@
                 display: none;
                 background: #89808a;
                 font-weight: bold;
-                padding: 25px 0;
                 border-style: solid;
                 border-color: rgb(75,28,108);
                 border-radius: 8px;
@@ -113,32 +152,48 @@
                 vertical-align: middle;
             }
 
+            .tile.col-4 {
+                padding: 25px 0;
+            }
+
+            .tile.col-5 {
+                padding: 36px 0;
+            }
+
             .notile {
                 display: inline-block;
                 background-color: transparent !important;
                 font-weight: bold;
-                padding: 25px 0;
                 border-color: transparent;
             }
 
-            #start {
+            .notile.col-4 {
+                padding: 25px 0;
+            }
+
+            .notile.col-5 {
+                padding: 36px 0;
+            }
+
+            .start {
+                display: none;
 				margin: auto;
                 margin-top: 150px;
-                background-color: rgb(226,120,2);
+                color: rgb(226,120,2);
 				border-radius: 40px;
 				cursor:pointer;
-				color: #282828;
+				background-color: #282828;
 				font-size:3rem;
 				font-weight: bold;
 				padding:16px 31px;
 				text-decoration:none;
             }
 
-            #start:focus {
+            .start:focus {
                 outline: none;
             }
 
-            #result {
+            .result {
             	display: none;
                 position: relative;
                 margin: auto;
@@ -186,6 +241,7 @@
                 z-index: 2;
                 background-color: #e6dcff;
                 color: #50008c;
+                text-align: center;
             }
 
             #bt h3 {
@@ -205,6 +261,7 @@
                 padding: 0;
                 line-height: 1.6;
                 font-size: 1.3rem;
+                margin-top: 5px;
             }
 
             .close {
@@ -228,7 +285,40 @@
                 cursor: pointer;
             }
 
+            #s4 {
+                display: block;
+                max-width: 110px;
+                margin: auto;
+                margin-top: 20px;
+                text-align: center;
+                cursor: pointer;
+                color: #282828;
+                font-size:1.2rem;
+                font-weight: bold;
+                padding:10px 30px;
+                text-decoration:none;
+                background-color: rgb(226,120,2);
+                border-radius: 40px;
+            }
+
+            #s5 {
+                display: none;
+                max-width: 110px;
+                margin: auto;
+                margin-top: 20px;
+                text-align: center;
+                cursor: pointer;
+                color: #282828;
+                font-size:1.2rem;
+                font-weight: bold;
+                padding:10px 30px;
+                text-decoration:none;
+                background-color: rgb(226,120,2);
+                border-radius: 40px;
+            }
+
             #reset {
+                display: none;
                 font-size: 1.3rem;
                 max-width: 110px;
                 margin: auto;
@@ -251,14 +341,40 @@
 				transition-timing-function: ease-in-out;
             }
 
+            #b4 {
+                display: block;
+            }
+
+            #b5 {
+                display: none;
+            }
+
+            .choose {
+                text-align: center;
+            }
+
+            .choose img {
+                max-width: 60%;
+                margin: 40px auto 30px auto;
+            }
+
+            #bs5 {
+                display: none;
+            }
+
             @media (max-width: 450px) {
-                #box {
+                .box {
                     max-width: 90vw;
                     min-height: 85vw;
                 }
 
-                .tile {
-                    padding: 5.7vw 0;
+                .tile.col-5 {
+                    padding: 7.1vw 0;
+                    font-size: 1.2rem;
+                }
+
+                .tile.col-4 {
+                    padding: 5.1vw 0;
                     font-size: 1.2rem;
                 }
 
@@ -270,7 +386,7 @@
                     max-width: 90vw;
                 }
 
-                #start {
+                .start {
                     margin-top: 30vw;
                     font-size: 3rem;
                 }
@@ -282,59 +398,113 @@
         	<img src="logo.png" style="max-width: 100px">
 		</div>
         <div id="timerbox" class="row">
-            <div class="col-5" style="font-size: 1.3rem">
+            <div class="col-10" style="font-size: 1.3rem">
                 <span style="color: #8c5ac8">Time<br></span>
                 <div id="timer">0:00</div>
             </div>
-            <div id="tops" class="col-5">Top 5 Score</div>
+            <div id="tops" class="col-10">Top 5 Score</div>
         </div>
         <div id="click">Click the numbers as quickly as you can!
 	</div>
-        <div id="box">
-            <div id="result">
-                Your Score<br>
+        <div class="box" id="b4">
+            <div id="result4" class="result">
+                <span id="sh4">Your Score</span><br>
                 <div id="res">0.00</div>
-		
             </div>
             <div class="row">
-                <div class="tile col-2" id="t1"></div>
-                <div class="tile col-2" id="t2"></div>
-                <div class="tile col-2" id="t3"></div>
-                <div class="tile col-2" id="t4"></div>
-                <div class="tile col-2" id="t5"></div>
+                <div class="tile col-5" id="t41"></div>
+                <div class="tile col-5" id="t42"></div>
+                <div class="tile col-5" id="t43"></div>
+                <div class="tile col-5" id="t44"></div>
             </div>
             <div class="row">
-                <div class="tile col-2" id="t6"></div>
-                <div class="tile col-2" id="t7"></div>
-                <div class="tile col-2" id="t8"></div>
-                <div class="tile col-2" id="t9"></div>
-                <div class="tile col-2" id="t10"></div>
+                <div class="tile col-5" id="t45"></div>
+                <div class="tile col-5" id="t46"></div>
+                <div class="tile col-5" id="t47"></div>
+                <div class="tile col-5" id="t48"></div>
             </div>
             <div class="row">
-                <div class="tile col-2" id="t11"></div>
-                <div class="tile col-2" id="t12"></div>
-                <div class="tile col-2" id="t13"></div>
-                <div class="tile col-2" id="t14"></div>
-                <div class="tile col-2" id="t15"></div>
+                <div class="tile col-5" id="t49"></div>
+                <div class="tile col-5" id="t410"></div>
+                <div class="tile col-5" id="t411"></div>
+                <div class="tile col-5" id="t412"></div>
             </div>
             <div class="row">
-                <div class="tile col-2" id="t16"></div>
-                <div class="tile col-2" id="t17"></div>
-                <div class="tile col-2" id="t18"></div>
-                <div class="tile col-2" id="t19"></div>
-                <div class="tile col-2" id="t20"></div>
+                <div class="tile col-5" id="t413"></div>
+                <div class="tile col-5" id="t414"></div>
+                <div class="tile col-5" id="t415"></div>
+                <div class="tile col-5" id="t416"></div>
+            </div>
+            <button onclick="start(4)" id="start4" class="start"></button>
+            <div class="choose">
+                <img src="b4.png">
+                <div class="row">
+                    <div class="col-4">&nbsp;</div>
+                    <div class="col-2" onclick="change(5)" style="cursor: pointer;">&lt;</div>
+                    <div class="col-8">Classic - 4&times;4</div>
+                    <div class="col-2" onclick="change(5)" style="cursor: pointer;">&gt;</div>
+                    <div class="col-4">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div class="box" id="b5">
+            <div id="result5" class="result">
+                <span id="sh5">Your Score</span><br>
+                <div id="res">0.00</div>
+        
             </div>
             <div class="row">
-                <div class="tile col-2" id="t21"></div>
-                <div class="tile col-2" id="t22"></div>
-                <div class="tile col-2" id="t23"></div>
-                <div class="tile col-2" id="t24"></div>
-                <div class="tile col-2" id="t25"></div>
+                <div class="tile col-4" id="t51"></div>
+                <div class="tile col-4" id="t52"></div>
+                <div class="tile col-4" id="t53"></div>
+                <div class="tile col-4" id="t54"></div>
+                <div class="tile col-4" id="t55"></div>
             </div>
-            <div>
-                <button onclick="start()" id="start">PLAY
-			</button>
+            <div class="row">
+                <div class="tile col-4" id="t56"></div>
+                <div class="tile col-4" id="t57"></div>
+                <div class="tile col-4" id="t58"></div>
+                <div class="tile col-4" id="t59"></div>
+                <div class="tile col-4" id="t510"></div>
             </div>
+            <div class="row">
+                <div class="tile col-4" id="t511"></div>
+                <div class="tile col-4" id="t512"></div>
+                <div class="tile col-4" id="t513"></div>
+                <div class="tile col-4" id="t514"></div>
+                <div class="tile col-4" id="t515"></div>
+            </div>
+            <div class="row">
+                <div class="tile col-4" id="t516"></div>
+                <div class="tile col-4" id="t517"></div>
+                <div class="tile col-4" id="t518"></div>
+                <div class="tile col-4" id="t519"></div>
+                <div class="tile col-4" id="t520"></div>
+            </div>
+            <div class="row">
+                <div class="tile col-4" id="t521"></div>
+                <div class="tile col-4" id="t522"></div>
+                <div class="tile col-4" id="t523"></div>
+                <div class="tile col-4" id="t524"></div>
+                <div class="tile col-4" id="t525"></div>
+            </div>
+            <button id="start5" class="start"></button>
+            <div class="choose">
+                <img src="b5.png">
+                <div class="row">
+                    <div class="col-4">&nbsp;</div>
+                    <div class="col-2" onclick="change(4)" style="cursor: pointer;">&lt;</div>
+                    <div class="col-8">Big - 5&times;5</div>
+                    <div class="col-2" onclick="change(4)" style="cursor: pointer;">&gt;</div>
+                    <div class="col-4">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button id="s5" class="start" onclick="start(5)">PLAY</button>
+        </div>
+        <div>
+            <button id="s4" class="start" onclick="start(4)">PLAY</button>
         </div>
         <div class="row" id="reset">
         	<img src="reset.png" style="max-width: 25px;"> RESET
@@ -343,7 +513,24 @@
             <div id="bt">
                 <span class="close">&times;</span>
                 <h3>BEST 5 TIME</h3>
-                <ol id="bscores"></ol>
+                <div id="bs4">
+                    <div class="row">
+                        <div class="col-2">&nbsp;</div>
+                        <div class="col-3" onclick="changebs(5)" style="cursor: pointer;">&lt;</div>
+                        <div class="col-10">Classic - 4&times;4</div>
+                        <div class="col-3" onclick="changebs(5)" style="cursor: pointer;">&gt;</div>
+                    </div>
+                    <ol id="bscores4"></ol>
+                </div>
+                <div id="bs5">
+                    <div class="row">
+                        <div class="col-2">&nbsp;</div>
+                        <div class="col-3" onclick="changebs(4)" style="cursor: pointer;">&lt;</div>
+                        <div class="col-10">Big - 5&times;5</div>
+                        <div class="col-3" onclick="changebs(4)" style="cursor: pointer;">&gt;</div>
+                    </div>
+                    <ol id="bscores5"></ol>
+                </div>
             </div>
         </div>
         <audio id="sound">
@@ -353,9 +540,10 @@
 
             var timer;
             var time = 0
-              , count = 0;
+            var count = 0;
             var i = 0;
-            var best;
+            var best4, best5;
+            var gsize, gno, max;
 
             var Ra = 140
               , Ga = 90
@@ -365,13 +553,20 @@
               , Bb = 140;
             var nos = []
               , ind = [];
+            var box5, box4;
 
             if (typeof (Storage) !== "undefined") {
-                best = window.localStorage.getItem("best");
-                if (best == null)
-                    best = [];
+                best4 = window.localStorage.getItem("best4");
+                best5 = window.localStorage.getItem("best5");
+                if (best4 == null)
+                    best4 = [];
                 else {
-                    best = best.split(",");
+                    best4 = best4.split(",");
+                }
+                if (best5 == null)
+                    best5 = [];
+                else {
+                    best5 = best5.split(",");
                 }
             }
 
@@ -384,58 +579,74 @@
             }
 
             function newbest() {
+                var best, nb = false;
+                if(gsize==4) best = best4;
+                else best = best5;
+                if ((time - 0.01).toFixed(2) < best[0]) nb = true;
                 best.push((time - 0.01).toFixed(2));
                 best.sort();
                 if (best.length > 5)
                     best = best.slice(0, 5);
-                localStorage.setItem("best", best.toString());
-                console.log(best);
-                var bscores = document.getElementById("bscores");
+                localStorage.setItem("best"+gsize, best.toString());
+                var bscores = document.getElementById("bscores" + gsize);
                 var bshtml = "";
                 for (var y = 0; y < best.length; y++) {
                     bshtml += ("<li>" + best[y] + "</li>");
                 }
                 bscores.innerHTML = bshtml;
+                return nb;
             }
 
-            function start() {
+            function start(s) {
+                gsize = s;
+                gno = (gsize*gsize);
+                max = 30 + (gsize-4)*10;
                 count = 0;
                 num();
                 var ti = 3;
-                var start = document.getElementById("start");
+                document.getElementById("s4").style.display = "none";
+                document.getElementById("s5").style.display = "none";
+                document.getElementById("reset").style.display = "block";
+                document.getElementsByClassName("choose")[0].style.display = "none";
+                document.getElementsByClassName("choose")[1].style.display = "none";
+                var start = document.getElementById("start"+gsize);
+                start.style.display = "block";
                 var x = setInterval(function() {
                     start.innerHTML = ti;
-                    start.style.backgroundColor = "transparent";
-                	start.style.color = "rgb(226,120,2)";
                     if (ti == 0) {
                         clearInterval(x);
                         start.style.display = "none";
-                        var tiles = document.getElementsByClassName('tile');
-                        for (var i = 0; i < tiles.length; i++) {
-                            var tile = tiles[i];
+                        for (var i = 1; i < gno+1; i++) {
+                            var tile = document.getElementById("t" + gsize + i);
                             tile.style.display = "inline-block";
                         }
                         start_timer();
                     }
                     ti--;
                 }, 1000);
+                start.innerHTML = " ";
             }
 
             function num() {
+                for (var i = 1; i < gno+1; i++) {
+                    nos[i - 1] = i;
+                    ind[i - 1] = 0;
+                }
                 nos = shuffle(nos);
-                for (var i = 1; i < 26; i++) {
-                    var t = document.getElementById("t" + i);
+                for (var i = 1; i < gno+1; i++) {
+                    var t = document.getElementById("t" + gsize + i);
                     t.innerHTML = nos[i - 1];
                     t.style.pointerEvents = 'none';
                     ind[nos[i - 1] - 1] = i;
-                    var r = Ra + ((Rb - Ra) / 40) * nos[i - 1]
-                      , g = Ga + ((Gb - Ga) / 40) * nos[i - 1]
-                      , b = Ba + ((Bb - Ba) / 40) * nos[i - 1];
+                    var r = Ra + ((Rb - Ra) / max) * nos[i - 1]
+                      , g = Ga + ((Gb - Ga) / max) * nos[i - 1]
+                      , b = Ba + ((Bb - Ba) / max) * nos[i - 1];
                     t.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"
 
                 }
-                document.getElementById("t" + ind[count]).style.pointerEvents = 'auto';
-                document.getElementById("t" + ind[count++]).style.cursor = 'pointer';
+
+                document.getElementById("t" + gsize + ind[count]).style.pointerEvents = 'auto';
+                document.getElementById("t" + gsize + ind[count++]).style.cursor = 'pointer';
             }
 
             function shuffle(array) {
@@ -457,7 +668,39 @@
             	}
             }
 
+            function change(n) {
+                if (n==5) {
+                    box4.style.display = "none";
+                    box5.style.display = "block";
+                    document.getElementById("s4").style.display = "none";
+                    document.getElementById("s5").style.display = "block";
+                }
+                else if (n==4) {
+                    box5.style.display = "none";
+                    box4.style.display = "block";
+                    document.getElementById("s5").style.display = "none";
+                    document.getElementById("s4").style.display = "block";
+                }
+            }
+
+            function changebs(n) {
+                var bs1,bs2;
+                if(n==5) {
+                    bs1 = document.getElementById("bs5");
+                    bs2 = document.getElementById("bs4");
+                }
+                else if(n==4) {
+                    bs1 = document.getElementById("bs4");
+                    bs2 = document.getElementById("bs5");
+                } 
+                bs1.style.display = "block";
+                bs2.style.display = "none";
+            }
+
             window.onload = function() {
+
+                box5 = document.getElementById("b5");
+                box4 = document.getElementById("b4");  
 
                 var tiles = document.getElementsByClassName('tile');
 
@@ -465,70 +708,82 @@
                     var tile = tiles[i];
                     tile.onclick = function() {
                         document.getElementById("sound").play();
-                        if (parseInt(this.innerHTML) < 16) {
-                            var no = parseInt(this.innerHTML) + 25;
-                            var r = Ra + ((Rb - Ra) / 40) * (no)
-                              , g = Ga + ((Gb - Ga) / 40) * (no)
-                              , b = Ba + ((Bb - Ba) / 40) * (no);
+                        if (parseInt(this.innerHTML) < (max+1-gno)) {
+                            var no = parseInt(this.innerHTML) + gno;
+                            var r = Ra + ((Rb - Ra) / max) * (no)
+                              , g = Ga + ((Gb - Ga) / max) * (no)
+                              , b = Ba + ((Bb - Ba) / max) * (no);
                             this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
                             this.innerHTML = no;
                             this.style.pointerEvents = 'none';
                             this.style.cursor = 'auto';
-                            document.getElementById("t" + ind[count]).style.pointerEvents = 'auto';
-                            document.getElementById("t" + ind[count++]).style.cursor = 'pointer';
-                        } else {
+                            document.getElementById("t" + gsize + ind[count]).style.pointerEvents = 'auto';
+                            document.getElementById("t" + gsize + ind[count++]).style.cursor = 'pointer';
+                        }
+                        else {
                             this.classList.add("notile");
                             this.style.cursor = 'auto';
                             this.innerHTML = "&nbsp";
                             this.style.pointerEvents = 'none';
-                            if (count < 25) {
-                                document.getElementById("t" + ind[count]).style.pointerEvents = 'auto';
-                                document.getElementById("t" + ind[count++]).style.cursor = 'pointer';
+                            if (count < gno) {
+                                document.getElementById("t" + gsize + ind[count]).style.pointerEvents = 'auto';
+                                document.getElementById("t" + gsize + ind[count++]).style.cursor = 'pointer';
                             } else {
-                                document.getElementById("t" + ind[count - 25]).style.pointerEvents = 'auto';
-                                document.getElementById("t" + ind[count++ - 25]).style.cursor = 'pointer';
+                                document.getElementById("t" + gsize + ind[count - gno]).style.pointerEvents = 'auto';
+                                document.getElementById("t" + gsize + ind[count++ - gno]).style.cursor = 'pointer';
                             }
-                            if (count == 41) {
+                            if (count == max+1) {
                                 clearInterval(timer);
-                                newbest();
-                                var result = document.getElementById("result");
+                                var nhs = newbest();
+                                var result = document.getElementById("result"+gsize);
                                 result.style.display = "block";
                                 var res = document.getElementById("res");
                                 res.innerHTML = (time-0.01).toFixed(2);
+                                if (nhs) {
+                                    var nhs = document.getElementById("sh"+gsize);
+                                    nhs.innerHTML = "New High Score";
+                                    nhs.style.fontSize = "3rem";
+                                } 
+                                else {
+                                    var nhs = document.getElementById("sh"+gsize);
+                                    nhs.innerHTML = "Your Score";
+                                    nhs.style.fontSize = "4rem";
+                                }
                                 tilesoff();
                             }
                         }
                     }
                 }
 
-                for (var i = 1; i < 26; i++) {
-                    nos[i - 1] = i;
-                    ind[i - 1] = 0;
-                }
-
-                var bscores = document.getElementById("bscores");
+                var bscores = document.getElementById("bscores4");
                 var bshtml = "";
-                for (var y = 0; y < best.length; y++) {
-                    bshtml += ("<li>" + best[y] + "</li>");
+                for (var y = 0; y < best4.length; y++) {
+                    bshtml += ("<li>" + best4[y] + "</li>");
+                }
+                bscores.innerHTML = bshtml;
+
+                bscores = document.getElementById("bscores5");
+                bshtml = "";
+                for (var y = 0; y < best5.length; y++) {
+                    bshtml += ("<li>" + best5[y] + "</li>");
                 }
                 bscores.innerHTML = bshtml;
 
                 var reset = document.getElementById("reset");
                 reset.onclick = function() {
                     clearInterval(timer);
-                    var result = document.getElementById("result");
-                    result.style.display = "none";
+                    // var result = document.getElementById("result");
+                    // result.style.display = "none";
                     time = 0;
-                    for (var i = 0; i < tiles.length; i++) {
-                        var tile = tiles[i];
+                    for (var i = 1; i < gno+1; i++) {
+                        var tile = document.getElementById("t" + gsize + i);
                         tile.style.display = "none";
                         tile.classList.remove("notile");
                     }
-                    var start = document.getElementById("start");
-                    start.style.display = "block";
-                    start.innerHTML = "PLAY";
-                    start.style.color = "#282828";
-                	start.style.backgroundColor = "rgb(226,120,2)";
+                    document.getElementsByClassName("choose")[0].style.display = "block";
+                    document.getElementsByClassName("choose")[1].style.display = "block";
+                    document.getElementById("s"+gsize).style.display = "block";
+                    document.getElementById("reset").style.display = "none";
                     var ti = document.getElementById("timer");
                     ti.innerHTML = "0.00";
                 }
